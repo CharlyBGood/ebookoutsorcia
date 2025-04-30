@@ -6,12 +6,12 @@ body {
 }
 .precio {
     font-size: 24px;
-    color: #2ecc71;
+    color: #589e85;
     font-weight: bold;
 }
 button {
     background: #2ecc71;
-    color: white;
+    color: #f9f8eb;
     padding: 15px 30px;
     border: none;
     border-radius: 5px;
