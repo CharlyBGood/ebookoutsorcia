@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+.precio {
+    font-size: 24px;
+    color: #2ecc71;
+    font-weight: bold;
+}
+button {
+    background: #2ecc71;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+img {
+    width: 15vw;
+}

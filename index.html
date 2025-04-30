@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Compra tu eBook - [Título]</title>
+    <!-- Incluye el SDK de Mercado Pago -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Adquiere tu eBook exclusivo!</h1>
+        <img src="libro.jpg" alt="Portada del eBook">
+        <p>Descripción detallada del eBook...</p>
+        <p class="precio">USD 15</p>
+        <button id="checkout-btn">Comprar ahora</button>
+    </div>
+
+    <script>
+        // Configuración de Mercado Pago
+        const mp = new MercadoPago('TU_PUBLIC_KEY', {
+            locale: 'es-UY' // Configuración para Uruguay
+        });
+
+        document.getElementById('checkout-btn').addEventListener('click', async () => {
+            try {
+                // Crea la preferencia de pago (debes hacerlo desde tu backend)
+                const response = await fetch('https://tu-backend.com/crear-preferencia', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title: "Nombre del eBook",
+                        price: 15,
+                        email: "comprador@ejemplo.com" // Opcional
+                    })
+                });
+                
+                const preferenceId = await response.json();
+                
+                // Abre el checkout de Mercado Pago
+                mp.checkout({
+                    preference: { id: preferenceId },
+                    autoOpen: true
+                });
+            } catch (error) {
+                alert("Error al procesar el pago");
+            }
+        });
+    </script>
+</body>
+</html>
